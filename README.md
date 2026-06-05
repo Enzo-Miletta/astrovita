@@ -1,7 +1,5 @@
 # Monitor de Saúde da Tripulação
 
-Solução de **Visão Computacional** desenvolvida para a **Global Solution :: Space Connect (FIAP)**.
-
 O AstroVita captura vídeo da **webcam em tempo real** e realiza **inferência visual** com **MediaPipe Face Mesh + Pose** para monitorar continuamente sinais de **fadiga, sonolência e postura** de tripulantes em missões espaciais ou centros de controle remotos — emitindo alertas precoces antes que o erro humano comprometa a missão.
 
 ---
@@ -50,13 +48,8 @@ Webcam ──► Captura (OpenCV) ──► BGR→RGB ──► MediaPipe Face M
 ### Clonar e instalar
 
 ```bash
-git clone https://github.com/<SEU_USUARIO>/astrovita.git
-cd astrovita
-
-# (recomendado) criar ambiente virtual
+# (recomendado) criar ambiente virtual (Rodar em 3.11_3)
 python -m venv .venv
-# Linux/macOS:
-source .venv/bin/activate
 # Windows:
 .venv\Scripts\activate
 
@@ -90,50 +83,11 @@ python main.py --no-pose
 
 As métricas de cada sessão são salvas automaticamente em **`logs/session_log.csv`**.
 
-
-## Autores
-
-Desenvolvido por: 
-**Enzo Miletta - RM98677**
-**Fabício Bettarello Heluani - R554638**
-**Vitor Victorino Couto - RM54965**
-
 ---
-
-## 🧪 Estabilidade
-
-- **Suavização** das métricas (média móvel) reduz ruído sob variação de luz e movimento.
-- **Máquina de estados** para piscadas e bocejos evita falsos positivos.
-- Funciona com **rosto a distâncias variadas**; o `refine_landmarks` melhora a precisão dos olhos.
-- Em baixa luminosidade, recomenda-se iluminação frontal para melhor detecção.
-
----
-
 ## 👤 Autor
 
-Desenvolvido por **Enzo Miletta Herrera da Silva** — Engenharia de Software, FIAP.
-Global Solution :: **Space Connect**.
-
+### Desenvolvido por:
+ **Enzo Miletta Herrera da Silva - RM98677**
+**Fabricio Bettarello Heluani - RM554638**
+**Vitor Victorino Couto - RM554965**
 ---
-
-> Tema oficial: [FIAP Global Solution — Space Connect](https://www.fiap.com.br/graduacao/global-solution/)
-
----
-
-## 🛠️ Solução de Problemas
-
-### `AttributeError: module 'mediapipe' has no attribute 'solutions'`
-Você está com uma versão do MediaPipe nova demais (0.10.18+), que removeu a API `mp.solutions` usada neste projeto. Isso acontece principalmente no **Python 3.12+**, onde a versão 0.10.14 não pode ser instalada.
-
-**Solução — use Python 3.11:**
-```bash
-py -3.11 -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate      # Linux/macOS
-python -m pip install --upgrade pip
-pip install "mediapipe==0.10.14" "numpy<2" "opencv-python==4.10.0.84"
-python main.py
-```
-
-### `ERROR: Could not find a version that satisfies the requirement mediapipe==0.10.14`
-Seu Python é 3.12 ou mais novo. A 0.10.14 só tem instaladores para Python 3.8–3.11. Crie um ambiente virtual com **Python 3.11** (comandos acima).

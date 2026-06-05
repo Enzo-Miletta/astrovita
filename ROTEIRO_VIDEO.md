@@ -21,7 +21,6 @@ Duração alvo: **3 a 5 minutos**. Grave a tela mostrando o app rodando + sua na
 > - o **MAR**, que detecta bocejos;
 > - a **taxa de piscadas por minuto**, sinal de fadiga ocular;
 > - e a **inclinação da cabeça e dos ombros**, para avaliar a postura.
->
 > Com isso, o sistema classifica o estado em **NOMINAL**, **ATENÇÃO** ou **CRÍTICO**."
 
 ## 3. Demonstração ao vivo (1:30 – 3:30)

@@ -66,7 +66,6 @@ if not hasattr(mp, "solutions") or not hasattr(mp.solutions, "face_mesh"):
     print("\n[ERRO] Versao incompativel do MediaPipe detectada:",
           getattr(mp, "__version__", "desconhecida"))
     print("Este projeto usa a API `mp.solutions`, disponivel ate a versao 0.10.14.")
-    print("\nSolucao (use Python 3.10 ou 3.11):")
     print("  pip uninstall -y mediapipe")
     print('  pip install "mediapipe==0.10.14" "numpy<2"')
     print("\nSe o seu Python for 3.12+, a 0.10.14 nao tem instalador.")
