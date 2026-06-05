@@ -1,5 +1,9 @@
 # AstroVita - Monitor de Saude da Tripulacao (GS Space Connect / FIAP)
-# Testado com Python 3.10 / 3.11
+#
+# IMPORTANTE: use Python 3.10 ou 3.11.
+# O mediapipe 0.10.14 (que mantem a API `mp.solutions` usada no projeto)
+# NAO possui instalador para Python 3.12+. Em Python 3.12+, o pip instala
+# automaticamente uma versao mais nova e incompativel.
 
 opencv-python==4.10.0.84
 mediapipe==0.10.14

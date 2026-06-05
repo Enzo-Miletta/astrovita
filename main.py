@@ -56,6 +56,26 @@ from health_monitor import HealthMonitor  # noqa: E402
 from overlay import draw_hud  # noqa: E402
 
 # ---------------------------------------------------------------------------
+# Verificacao de compatibilidade do MediaPipe
+# ---------------------------------------------------------------------------
+# A API legada `mp.solutions` (Face Mesh / Pose) existe ate o mediapipe
+# 0.10.14. Versoes mais novas (0.10.18+) removeram esse modulo. Se o pip
+# instalou uma versao incompativel (comum no Python 3.12+), avisamos de forma
+# clara em vez de deixar o traceback cru aparecer.
+if not hasattr(mp, "solutions") or not hasattr(mp.solutions, "face_mesh"):
+    print("\n[ERRO] Versao incompativel do MediaPipe detectada:",
+          getattr(mp, "__version__", "desconhecida"))
+    print("Este projeto usa a API `mp.solutions`, disponivel ate a versao 0.10.14.")
+    print("\nSolucao (use Python 3.10 ou 3.11):")
+    print("  pip uninstall -y mediapipe")
+    print('  pip install "mediapipe==0.10.14" "numpy<2"')
+    print("\nSe o seu Python for 3.12+, a 0.10.14 nao tem instalador.")
+    print("Crie um ambiente com Python 3.11, por exemplo:")
+    print("  py -3.11 -m venv .venv  &&  .venv\\Scripts\\activate")
+    print('  pip install "mediapipe==0.10.14" "numpy<2" opencv-python')
+    raise SystemExit(1)
+
+# ---------------------------------------------------------------------------
 # Indices de landmarks do MediaPipe Face Mesh
 # ---------------------------------------------------------------------------
 # Olho esquerdo e direito (ordem: ext, topo1, topo2, int, baixo2, baixo1)
