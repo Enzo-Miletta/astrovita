@@ -1,0 +1,6 @@
+# AstroVita - Monitor de Saude da Tripulacao (GS Space Connect / FIAP)
+# Testado com Python 3.10 / 3.11
+
+opencv-python==4.10.0.84
+mediapipe==0.10.14
+numpy==1.26.4
