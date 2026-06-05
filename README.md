@@ -1,4 +1,4 @@
-# 🛰️ AstroVita — Monitor de Saúde da Tripulação
+# Monitor de Saúde da Tripulação
 
 Solução de **Visão Computacional** desenvolvida para a **Global Solution :: Space Connect (FIAP)**.
 
@@ -6,7 +6,7 @@ O AstroVita captura vídeo da **webcam em tempo real** e realiza **inferência v
 
 ---
 
-## 🎯 Descrição da Solução
+## Descrição da Solução
 
 Em missões espaciais e operações críticas, a fadiga da tripulação é um dos maiores riscos para a segurança. O AstroVita atua como um **copiloto de saúde autônomo**: usando apenas uma câmera comum, ele acompanha o estado do tripulante quadro a quadro e classifica seu nível de fadiga em **NOMINAL**, **ATENÇÃO** ou **CRÍTICO**.
 
@@ -27,19 +27,6 @@ Monitoramento autônomo e contínuo da atenção e saúde da tripulação em **a
 
 ---
 
-## 🧩 Estrutura do Projeto
-
-```
-astrovita/
-├── main.py                 # Loop principal: captura + pipeline de CV + HUD
-├── requirements.txt        # Dependências
-├── README.md
-├── .gitignore
-└── src/
-    ├── metrics.py          # EAR, MAR, ângulos, contadores e suavização
-    ├── health_monitor.py   # Thresholds, alertas e classificação de fadiga
-    └── overlay.py          # HUD estilo painel de missão
-```
 
 ### Pipeline de Visão Computacional
 
@@ -51,21 +38,16 @@ Webcam ──► Captura (OpenCV) ──► BGR→RGB ──► MediaPipe Face M
 
 ---
 
-## 📚 Bibliotecas Utilizadas
+## Bibliotecas Utilizadas
 
-- **[OpenCV](https://opencv.org/)** (`opencv-python`) — captura de vídeo, processamento de imagem e renderização do HUD.
-- **[MediaPipe](https://developers.google.com/mediapipe)** — Face Mesh (468 pontos) e Pose (estimativa corporal).
-- **[NumPy](https://numpy.org/)** — operações numéricas auxiliares.
+- **OpenCV
+- **MediaPipe
+- **NumPy
 
 ---
 
-## ⚙️ Instruções de Execução
 
-### 1. Pré-requisitos
-- Python **3.10** ou **3.11** (recomendado)
-- Uma webcam conectada
-
-### 2. Clonar e instalar
+### Clonar e instalar
 
 ```bash
 git clone https://github.com/<SEU_USUARIO>/astrovita.git
@@ -81,7 +63,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Executar
+### Executar
 
 ```bash
 # Webcam padrão
@@ -108,22 +90,11 @@ python main.py --no-pose
 
 As métricas de cada sessão são salvas automaticamente em **`logs/session_log.csv`**.
 
----
 
-## 🧪 Estabilidade
+## Autores
 
-- **Suavização** das métricas (média móvel) reduz ruído sob variação de luz e movimento.
-- **Máquina de estados** para piscadas e bocejos evita falsos positivos.
-- Funciona com **rosto a distâncias variadas**; o `refine_landmarks` melhora a precisão dos olhos.
-- Em baixa luminosidade, recomenda-se iluminação frontal para melhor detecção.
+Desenvolvido por: 
+**Enzo Miletta - RM98677**
+**Fabício Bettarello Heluani - R554638**
+**Vitor Victorino Couto - RM54965**
 
----
-
-## 👤 Autor
-
-Desenvolvido por **Enzo Miletta Herrera da Silva** — Engenharia de Software, FIAP.
-Global Solution :: **Space Connect**.
-
----
-
-> Tema oficial: [FIAP Global Solution — Space Connect](https://www.fiap.com.br/graduacao/global-solution/)
